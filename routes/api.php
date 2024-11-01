@@ -15,3 +15,6 @@ Route::get('/users', [UserController::class, 'index']);
 
 Route::put('/user/{id}', [UserController::class, 'update']);
 
+
+Route::get('/tasks', [TaskController::class, 'index']);
+Route::get('/tasks/{id}', [TaskController::class, 'show']);
