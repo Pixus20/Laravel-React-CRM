@@ -15,6 +15,7 @@ Route::get('/users', [UserController::class, 'index']);
 
 Route::put('/user/{id}', [UserController::class, 'update']);
 
+Route::get('/users/{id}', [UserController::class, 'show']);
 
 Route::post('/tasks', [TaskController::class, 'store']);
 
