@@ -11,7 +11,8 @@ class CreateTasksTable extends Migration
             $table->id();
             $table->string('title');
             $table->unsignedBigInteger('author_id');
-            $table->unsignedBigInteger('doer_id'); 
+            $table->unsignedBigInteger('doer_id');
+            $table->unsignedBigInteger('bill');
             $table->text('description');
             $table->text('short_description')->nullable();
             $table->timestamps();

@@ -7,13 +7,22 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    public function index()
+    public function store(Request $request)
     {
-        return Task::select('id', 'title', 'short_description')->get();
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'author_id' => 'required|exists:users,id',
+            'doer_id' => 'required|exists:users,id',
+            'bill' => 'required|integer',
+            'description' => 'required|string',
+            'short_description' => 'nullable|string',
+        ]);
+
+        $task = Task::create($validatedData);
+
+        return response()->json([
+            'message' => 'Task created successfully',
+            'task' => $task,
+        ], 201);
     }
-    public function show($id)
-{
-    $task = Task::with(['author', 'doer'])->findOrFail($id);
-    return response()->json($task);
-}
 }
