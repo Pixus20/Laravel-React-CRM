@@ -31,48 +31,48 @@ class AuthController extends Controller
         return response()->json(['message' => 'User registered successfully'], 201);
     }
 
-    // // Login on
-    // public function login(Request $request)
-    // {
-    //     $request->validate([
-    //         'email' => 'required|email',
-    //         'password' => 'required',
-    //     ]);
-
-    //     if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-    //         $user = Auth::user();
-    //         $token = $user->createToken('YourAppName')->plainTextToken; 
-
-    //         return response()->json([
-    //             'token' => $token,
-    //             'user' => $user,
-    //         ]);
-    //     }
-
-    //     return response()->json(['message' => 'Invalid credentials'], 401);
-    // }
-
 
     public function login(Request $request)
     {
-        // Валідація запиту
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
 
-        // Отримуємо дані аутентифікації
-        $credentials = $request->only('email', 'password');
-
-        // Спробуємо аутентифікувати користувача
-        if (Auth::attempt($credentials)) {
-            // Аутентифікація пройшла успішно
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $user = Auth::user();
-            $token = $user->createToken('YourAppName')->accessToken; // Генерація токену
+            $token = $user->createToken('YourAppName')->plainTextToken; 
 
-            return response()->json(['token' => $token], 200);
+            return response()->json([
+                'token' => $token,
+                'user' => $user,
+            ]);
         }
 
-        return response()->json(['error' => 'Unauthorized'], 401);
+        return response()->json(['message' => 'Invalid credentials'], 401);
     }
+
+
+    // public function login(Request $request)
+    // {
+    //     // Валідація запиту
+    //     $request->validate([
+    //         'email' => 'required|email',
+    //         'password' => 'required',
+    //     ]);
+
+    //     // Отримуємо дані аутентифікації
+    //     $credentials = $request->only('email', 'password');
+
+    //     // Спробуємо аутентифікувати користувача
+    //     if (Auth::attempt($credentials)) {
+    //         // Аутентифікація пройшла успішно
+    //         $user = Auth::user();
+    //         $token = $user->createToken('YourAppName')->accessToken; // Генерація токену
+
+    //         return response()->json(['token' => $token], 200);
+    //     }
+
+    //     return response()->json(['error' => 'Unauthorized'], 401);
+    // }
 } 
