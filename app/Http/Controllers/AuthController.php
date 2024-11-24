@@ -51,28 +51,4 @@ class AuthController extends Controller
 
         return response()->json(['message' => 'Invalid credentials'], 401);
     }
-
-
-    // public function login(Request $request)
-    // {
-    //     // Валідація запиту
-    //     $request->validate([
-    //         'email' => 'required|email',
-    //         'password' => 'required',
-    //     ]);
-
-    //     // Отримуємо дані аутентифікації
-    //     $credentials = $request->only('email', 'password');
-
-    //     // Спробуємо аутентифікувати користувача
-    //     if (Auth::attempt($credentials)) {
-    //         // Аутентифікація пройшла успішно
-    //         $user = Auth::user();
-    //         $token = $user->createToken('YourAppName')->accessToken; // Генерація токену
-
-    //         return response()->json(['token' => $token], 200);
-    //     }
-
-    //     return response()->json(['error' => 'Unauthorized'], 401);
-    // }
 } 

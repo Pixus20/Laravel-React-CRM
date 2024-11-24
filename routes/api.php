@@ -9,9 +9,12 @@ use App\Http\Controllers\TaskController;
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::middleware('auth:sanctum')->get('/users', [UserController::class, 'index']);
+Route::get('/users', [UserController::class, 'index']);
 Route::put('/user/{id}', [UserController::class, 'update']);
 Route::get('/users/{id}', [UserController::class, 'show']);
+
+Route::get('/me', [UserController::class, 'me']);
+
 
 Route::post('/tasks', [TaskController::class, 'store']);
 Route::get('/tasks/{id}', [TaskController::class, 'show']);

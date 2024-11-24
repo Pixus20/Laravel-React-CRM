@@ -36,4 +36,8 @@ class UserController extends Controller
             'email' => $user->email,
         ]);
     }
+    public function me(Request $request)
+    {
+        return response()->json($request->user());
+    }
 }
