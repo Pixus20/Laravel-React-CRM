@@ -16,6 +16,7 @@ class TaskController extends Controller
             'bill' => 'required|integer',
             'description' => 'required|string',
             'short_description' => 'nullable|string',
+            'due_date'=>'nullable|date'
         ]);
 
         $task = Task::create($validatedData);
@@ -25,4 +26,8 @@ class TaskController extends Controller
             'task' => $task,
         ], 201);
     }
+    public function index()
+{
+    return response()->json(Task::all(), 200);
+}
 }

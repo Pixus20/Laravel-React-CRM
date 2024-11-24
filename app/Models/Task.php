@@ -14,6 +14,7 @@ class Task extends Model
         'author_id',
         'doer_id',
         'bill',
+        'due_date',
         'description',
         'short_description',
     ];
