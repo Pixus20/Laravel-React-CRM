@@ -26,7 +26,7 @@ Route::delete('tasks/{id}', [TaskController::class, 'destroy']);
 
 
 
-Route::get('/tasks/total-bill', [TaskController::class, 'totalBill']);
+Route::get('/total-bill', [TaskController::class, 'totalBill']);
 
 
 Route::post('/comments', [CommentController::class, 'store']);

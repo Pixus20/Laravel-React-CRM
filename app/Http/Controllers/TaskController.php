@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use Illuminate\Http\Request;
 
+
 class TaskController extends Controller
 {
     public function store(Request $request)
@@ -36,15 +37,11 @@ class TaskController extends Controller
 
     public function totalBill(Request $request)
     {
-        $month = $request->query('month');
-        $year = $request->query('year');
-        $query = Task::query();
-        if ($month && $year) {
-            $query->whereMonth('created_at', $month)->whereYear('created_at', $year);
-        }
-        $totalBill = $query->sum('bill');
+        $totalBill = Task::where('status', 'done')->sum('bill');
+        
         return response()->json(['total_bill' => $totalBill], 200);
     }
+
     public function show($id)
     {
         $task = Task::with('author')->find($id);
