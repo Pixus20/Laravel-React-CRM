@@ -16,10 +16,12 @@ Route::get('/users/{id}', [UserController::class, 'show']);
 Route::get('/me', [UserController::class, 'me']);
 
 
+
 Route::post('/tasks', [TaskController::class, 'store']);
 Route::get('/tasks', [TaskController::class, 'index']);
 Route::get('/tasks/{id}', [TaskController::class, 'show']);
 Route::put('/tasks/{id}/status', [TaskController::class, 'updateStatus']);
+Route::delete('tasks/{id}', [TaskController::class, 'destroy']);
 
 
 
