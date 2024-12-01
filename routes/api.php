@@ -17,5 +17,14 @@ Route::get('/me', [UserController::class, 'me']);
 
 
 Route::post('/tasks', [TaskController::class, 'store']);
-Route::get('/tasks/{id}', [TaskController::class, 'show']);
 Route::get('/tasks', [TaskController::class, 'index']);
+Route::get('/tasks/{id}', [TaskController::class, 'show']);
+Route::put('/tasks/{id}/status', [TaskController::class, 'updateStatus']);
+
+
+
+
+Route::get('/tasks/total-bill', [TaskController::class, 'totalBill']);
+
+
+Route::post('/comments', [CommentController::class, 'store']);
